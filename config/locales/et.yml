@@ -29,29 +29,21 @@
 # See doc/COPYRIGHT.rdoc for more details.
 #++
 
-Feature: Adding the document widget to personalisable pages
+et:
+  activerecord:
+    models:
+      document: "Dokument"
 
-  Background:
-    Given there is 1 project with the following:
-      | name        | project1      |
-    And I am already Admin
+  default_doc_category_tech: "Tehniline dokumentatsioon"
+  default_doc_category_user: "Kasutajate dokumentatsioon"
 
-  @javascript
-  Scenario: Adding a "Documents" widget to the my project page
-    Given the plugin "openproject_my_project_page" is loaded
-    And I am on the project "project1" overview personalization page
-    # Safeguard to ensure the page is loaded
-    And I should see "Add" within "#block-select"
-    When I select "Documents" from the available widgets drop down
-    Then the "Documents" widget should be in the hidden block
-    And "Documents" should be disabled in the my project page available widgets drop down
+  enumeration_doc_categories: "Dokumentide kategooriad"
 
-  @javascript
-  Scenario: Adding a "Documents" widget to the my page
-    Given I am on the My page personalization page
-    # Safeguard to ensure the page is loaded
-    And I should see "My page block"
-    When I select "Documents" from the available widgets drop down
-    And I click on "Add"
-    Then the "Documents" widget should be in the top block
-    And "Documents" should be disabled in the my page available widgets drop down
+  label_document_added: "Dokument on lisatud"
+  label_document_new: "Uus dokument"
+  label_document_plural: "Dokumendid"
+  label_documents: "Dokumendid"
+
+  permission_manage_documents: "Dokumentide haldamine"
+  permission_view_documents: "Dokumentide vaatamine"
+  project_module_documents: "Dokumendid"

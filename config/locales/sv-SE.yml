@@ -29,29 +29,21 @@
 # See doc/COPYRIGHT.rdoc for more details.
 #++
 
-Feature: Adding the document widget to personalisable pages
+sv-SE:
+  activerecord:
+    models:
+      document: "Dokument"
 
-  Background:
-    Given there is 1 project with the following:
-      | name        | project1      |
-    And I am already Admin
+  default_doc_category_tech: "Teknisk dokumentation"
+  default_doc_category_user: "Användardokumentation"
 
-  @javascript
-  Scenario: Adding a "Documents" widget to the my project page
-    Given the plugin "openproject_my_project_page" is loaded
-    And I am on the project "project1" overview personalization page
-    # Safeguard to ensure the page is loaded
-    And I should see "Add" within "#block-select"
-    When I select "Documents" from the available widgets drop down
-    Then the "Documents" widget should be in the hidden block
-    And "Documents" should be disabled in the my project page available widgets drop down
+  enumeration_doc_categories: "Dokumentkategorier"
 
-  @javascript
-  Scenario: Adding a "Documents" widget to the my page
-    Given I am on the My page personalization page
-    # Safeguard to ensure the page is loaded
-    And I should see "My page block"
-    When I select "Documents" from the available widgets drop down
-    And I click on "Add"
-    Then the "Documents" widget should be in the top block
-    And "Documents" should be disabled in the my page available widgets drop down
+  label_document_added: "Dokument tillagt"
+  label_document_new: "Nytt dokument"
+  label_document_plural: "Dokument"
+  label_documents: "Dokument"
+
+  permission_manage_documents: "Hantera dokument"
+  permission_view_documents: "Visa dokument"
+  project_module_documents: "Dokument"
